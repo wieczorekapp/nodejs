@@ -1,0 +1,65 @@
+<%- include ('./partials/menu_logged') %>
+
+<div class="container">
+  <%- include ('./partials/messages') %>
+  <div class="wrapper">
+    <div>
+      <h1>Moje dane profilowe</h1>
+      <table class="table table-striped center" id="my-profile">
+        <tbody>
+          <tr>
+            <td>Imię</td>
+            <td><%= user.name %></td>
+
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= user.email %></td>
+
+          </tr>
+          <tr>
+            <td>Klub</td>
+            <td><%= user.club || "Nie należę do żadengo klubu" %></td>
+
+          </tr>
+          <tr>
+            <td>Trener</td>
+            <td><%= user.coach || "TRENER" %></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      <form action="/users/club" method="POST">
+        <div class="mb-3">
+            <label for="club" class="form-label">Klub</label>
+            <input
+              type="text"
+              name="club"
+              placeholder="Wprowadź klub"
+              class="form-control"
+              value="<%= user.club %>"
+            />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Dodaj lub aktualizuj klub</button>
+      </form>
+    </div>
+    <div>
+      <h1>Moje zdjęcie</h1>
+      <% let link = '/img/' + user.id + '.jpg' %>
+      <img src="<%= link %>" class="rounded mx-auto d-block" alt="Brak zdjęcia" />
+
+      <% if(!user.isPhoto) { %>
+        <form action="/addPhoto" method="POST" enctype="multipart/form-data">
+          <input class="form-control" type="file" name="photo" accept=".jpg, .jpeg" />
+          <button type="submit" class="btn btn-primary btn-block">Dodaj zdjęcie</button>
+        </form>
+      <% } else { %>
+        <form action="/users/deletePhoto" method="POST">
+          <button type="submit" class="btn btn-primary btn-block">Usuń zdjęcie</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</div>

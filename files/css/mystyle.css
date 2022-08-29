@@ -1,0 +1,47 @@
+.container {
+    margin: 25px;
+    width: 100px;
+    height: 500px;
+    /*outline: dashed 1px black;*/
+}
+
+.text {
+    text-align: center;
+}
+
+.error-msg {
+    color: tomato;
+    font-weight: 500;
+}
+
+.hiden {
+    display: none;
+}
+
+/*
+#my-profile {
+    
+}*/
+
+tbody tr td:first-child {
+    width: 300px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.wrapper div{
+    padding: 10px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+  
+.new-message {
+    color: red
+}

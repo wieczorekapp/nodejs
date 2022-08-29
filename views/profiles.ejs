@@ -1,0 +1,22 @@
+<%- include ('./partials/menu_logged') %>
+
+<div class="container">
+      <h1>Moi Zawodnicy</h1>
+      <table class="table table-striped center" id="my-profile">
+        <thead>
+            <tr>
+                <td>Imię</td>
+                <td>Nazwisko</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% zawodnicy.forEach((zawodnik) => { %>
+                <tr>
+                    <% let link = '/users/profile/' + zawodnik.id %>
+                    <td><a href="<%= link %>" > <%= zawodnik.name %></a></td>
+                    <td><%= zawodnik.email %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+      </table>
+</div>

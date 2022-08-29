@@ -1,0 +1,31 @@
+<%- include ('./partials/menu_no_logged') %>
+
+<div class="container">
+<h1> Zaloguj </h1>
+
+<%- include ('./partials/messages') %>
+
+<form action="/users/login" method="POST">
+<div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+      type="email"
+      name="email"
+      placeholder="Wprowadź adres email"
+      class="form-control"
+      />
+</div>
+<div class="mb-3">
+    <label for="password" class="form-label">Hasło</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Wprowadź hasło"
+      class="form-control"
+    />
+  
+</div>
+<button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
+   
+</form>
+</div>

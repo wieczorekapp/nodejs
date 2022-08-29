@@ -1,0 +1,26 @@
+<%- include ('../partials/menu_logged') %>
+
+<div class="container">
+    <h1>Moje treningi</h1>
+
+    <table class="table table-striped center" id="my-profile">
+      <thead>
+          <tr>
+              <td>Data</td>
+              <td>Tytuł</td>
+              <td>Akcja</td>
+          </tr>
+      </thead>
+      <tbody>
+          <% workouts.forEach((workout) => { %>
+              <tr>
+                  <td> <%= workout.date %> </td>
+                  <td> <%= workout.title %> </td>
+
+                  <% let link = '/workouts/workout/' + workout.id %>
+                  <td><a href="<%= link %>" > Pokaż </a></td>
+              </tr>
+          <% }) %>
+      </tbody>
+    </table>
+</div>

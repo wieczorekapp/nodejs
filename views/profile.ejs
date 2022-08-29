@@ -1,0 +1,40 @@
+<%- include ('./partials/menu_logged') %>
+
+<div class="container">
+  <div class="wrapper">
+    <div>
+      <h1>Dane zawodnika</h1>
+      <table class="table table-striped center" id="my-profile">
+        <tbody>
+          <tr>
+            <td>Imię</td>
+            <td><%= zawodnik.name %></td>
+
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= zawodnik.email %></td>
+
+          </tr>
+          <tr>
+            <td>Klub</td>
+            <td><%= zawodnik.club || "brak klubu" %></td>
+
+          </tr>
+          <tr>
+            <td>Trener</td>
+            <td><%= zawodnik.coach || "TRENER" %></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+    <div>
+      <h1>Zdjęcie zawodnika</h1>
+      <% let link = '/img/' + zawodnik.id + '.jpg' %>
+      <img src="<%= link %>" class="rounded mx-auto d-block" alt="Brak zdjęcia">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<%- include ('../partials/menu_logged') %>
+
+
+<div class="container">
+
+    <table class="table table-striped center" id="my-profile">
+        <tbody>
+            <tr>
+                <td>Data</td>
+                <td><%= workout.date %></td>
+            </tr>
+            <tr>
+                <td>Zawodnik</td>
+                <td><%= workout.emailPlayer %></td>
+            </tr>
+            <tr>
+                <td>Tytuł</td>
+                <td><%= workout.title %></td>
+            </tr>
+            <tr>
+                <td>Treść</td>
+                <td><%= workout.description %></td>
+            </tr>
+            <tr>
+                <td>Rezultat</td>
+                <td><%= workout.result %></td>
+            </tr>
+            <tr>
+                <td>Ocena</td>
+                <td><%= workout.mark %></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <form id="register" action="/workouts/coachWorkout" method="POST">
+        <div class="mb-3">
+            <label for="id" class="form-label">Tytuł</label>
+            <input
+              type="hidden"
+              name="id"
+              placeholder="Wprowadź tytuł"
+              value="<%= typeof workout.id != 'undefined' ? workout.id : '' %>"
+              class="form-control"
+            />
+          
+        </div>
+    
+        <div class="mb-3"> 
+            <label for="result" class="form-label">Wynik</label>
+            <input
+              type="result"
+              name="result"
+              placeholder="Wprowadź wynik"
+              value="<%= typeof workout.result != 'undefined' ? workout.result : '' %>"
+              class="form-control"
+              required="required"
+            />
+          </div>
+        
+          <div class="mb-3">
+            <label for="mark" class="form-label">Wybierz ocenę</label>
+            <select id="mark" name="mark" class="form-control">
+              <% [1,2,3,4,5,6,7,8,9,10].forEach((number) => { %>
+                <% let selected = '' %>
+                <% if(number == workout.mark) { selected = 'selected="selected"'} %>
+                <option value="<%= number %> " <%= selected %>><%= number %></option>
+              <% }) %>
+            </select>
+          </div>
+        
+          <button type="submit" class="btn btn-primary btn-block">
+            Aktualizuj
+          </button>
+        </form>
+
+</div>

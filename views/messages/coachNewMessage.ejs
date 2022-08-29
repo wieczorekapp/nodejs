@@ -1,0 +1,58 @@
+<%- include ('../partials/menu_logged') %> 
+
+
+<div class="container">
+    <h1>Nowa wiadomość</h1>
+    
+    
+    <form id="new-message" action="/messages/newMessage" method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Tytuł</label>
+        <input
+          type="title"
+          name="title"
+          placeholder="Wprowadź tytuł"
+          value="<%= typeof title != 'undefined' ? title : '' %>"
+          class="form-control"
+          required="required"
+        />
+      
+    </div>
+
+    <div class="mb-3"> 
+        <label for="description" class="form-label">Treść</label>
+        <input
+          type="description"
+          name="description"
+          placeholder="Wprowadź treść"
+          value="<%= typeof description != 'undefined' ? description : '' %>"
+          class="form-control"
+          required="required"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="all_players" class="form-label">Dla: </label>
+        <select id="all_players" name="all_players" class="form-control" onchange="swapRole()">
+          <option value="1">Wszyscy moi zawodnicy</option>
+          <option value="0">Konkretny zawodnik</option>
+        </select>
+      </div>
+    
+      <div id="role" class="mb-3 hiden">
+        <label for="emailPlayer" class="form-label">Wybierz zawodnika</label>
+        <select id="emailPlayer" name="emailPlayer" class="form-control">
+          <% players.forEach((player) => { %>
+            <option value="<%= player.email %>"><%= player.name %></option>
+          <% }) %>
+        </select>
+      </div>
+    
+      <% if(length > 0) { %>
+        <button type="submit" class="btn btn-primary btn-block">
+            Wyślij
+        </button>
+      <% } %>
+
+    </form>
+    </div>

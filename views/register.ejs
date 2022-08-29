@@ -1,0 +1,74 @@
+<%- include ('./partials/menu_no_logged') %> 
+
+<div class="container">
+<h1>Rejestracja</h1>
+
+<%- include ('./partials/messages') %>
+
+
+<form id="register" action="/users/register" method="POST">
+<div class="mb-3">
+    <label for="name" class="form-label">Imię</label>
+    <input
+      type="name"
+      name="name"
+      placeholder="Wprowadź imię"
+      value="<%= typeof name != 'undefined' ? name : '' %>"
+      class="form-control"
+    />
+  
+</div>
+<div class="mb-3"> 
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Wprowadź adres email"
+      value="<%= typeof email != 'undefined' ? email : '' %>"
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Hasło</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Wprowadź hasło"
+      value="<%= typeof password != 'undefined' ? password : '' %>"
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label">Potwierdź hasło</label>
+    <input
+      type="password"
+      name="password2"
+      placeholder="Wprowadź hasło ponownie"
+      value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+      class="form-control"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="type" class="form-label">Wybierz rolę</label>
+    <select id="type" name="type" class="form-control" onchange="swapRole()">
+      <option value="0">Trener</option>
+      <% if(length > 0) { %>
+        <option value="1">Zawodnik</option>
+      <% } %>
+    </select>
+  </div>
+
+  <div id="role" class="mb-3 hiden">
+    <label for="coach" class="form-label">Wybierz trenera</label>
+    <select id="coach" name="coach" class="form-control">
+      <% triners.forEach((trainer) => { %>
+        <option value="<%= trainer.email %>"><%= trainer.name %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">
+    Zarejestruj się
+  </button>
+</form>
+</div>

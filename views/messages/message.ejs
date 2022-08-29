@@ -1,0 +1,42 @@
+<%- include ('../partials/menu_logged') %>
+
+<div class="container">
+
+    <table class="table table-striped center" id="my-profile">
+        <tbody>
+            <tr>
+                <td>Data</td>
+                <td><%= wiadomosc.date %></td>
+            </tr>
+            <tr>
+                <td>Tytuł</td>
+                <td><%= wiadomosc.title %></td>
+            </tr>
+            <tr>
+                <td>Treść</td>
+                <td><%= wiadomosc.description %></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <% if(wiadomosc.isRead) { %>
+                        Przeczytana
+                    <% } else { %>
+                        <span class="new-message">Do odczytu !!!</span>
+                    <% } %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <% if(wiadomosc.isRead) { %>
+    
+    <% } else { %>
+        <% let link = '/messages/confirm/' + wiadomosc.id %>
+
+        <a href="<%= link %>">Potwierdź</a>
+    <% } %>
+
+
+</div>

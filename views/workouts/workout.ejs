@@ -1,0 +1,33 @@
+<%- include ('../partials/menu_logged') %>
+
+<div class="container">
+
+    <table class="table table-striped center" id="my-profile">
+        <tbody>
+            <tr>
+                <td>Data</td>
+                <td><%= workout.date %></td>
+            </tr>
+            <tr>
+                <td>Tytuł</td>
+                <td><%= workout.title %></td>
+            </tr>
+            <tr>
+                <td>Treść</td>
+                <td><%= workout.description %></td>
+            </tr>
+            <tr>
+                <td>Rezultat</td>
+                <td><%= workout.result %></td>
+            </tr>
+            <tr>
+                <td>Ocena</td>
+                <td><%= workout.mark %></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>

@@ -1,0 +1,37 @@
+<%- include ('../partials/menu_logged') %>
+
+
+<div class="container">
+    <h1>Wysłane wiadomości</h1>
+    <h2>Liczba nieodczytanych widomości: <%= noReaded %></h2>
+    <table class="table table-striped center" id="my-profile">
+      <thead>
+          <tr>
+              <td>Data</td>
+              <td>Zawodnik</td>
+              <td>Tytuł</td>
+              <td>Status</td>
+              <td>Akcja</td>
+          </tr>
+      </thead>
+      <tbody>
+          <% wiadomosci.forEach((wiadomosc) => { %>
+              <tr>
+                  <td> <%= wiadomosc.date %> </td>
+                  <td> <%= wiadomosc.emailPlayer %> </td>
+                  <td> <%= wiadomosc.title %> </td>
+                  <td>
+                      <% if(wiadomosc.isRead) { %>
+                              Przeczytana
+                      <% } else { %>
+                              <span class="new-message">Do odczytu !!!</span>
+                      <% } %>
+                  </td>
+
+                  <% let link = '/messages/coachMessage/' + wiadomosc.id %>
+                  <td><a href="<%= link %>" > Pokaż </a></td>
+              </tr>
+          <% }) %>
+      </tbody>
+    </table>
+</div>
